@@ -85,7 +85,24 @@ export const createItems = async () => {
   const client = initConnection();
   client.connect();
 
-  // Your code is here...
+  await client.query(
+    `INSERT INTO users (name) VALUES('Ivan');`
+  );
+  await client.query(
+    `INSERT INTO categories (name) VALUES('Literary Fiction');`
+  );
+  await client.query(
+    `INSERT INTO authors (name) VALUES('Joanne Rowling');`
+  );
+  await client.query(
+    `INSERT INTO books (title, userid, authorid, categoryid) VALUES('Harry Potter', 1, 1, 1);`
+  );
+  await client.query(
+    `INSERT INTO descriptions (description, bookid) VALUES('Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling.', 1);`
+  );
+  await client.query(
+    `INSERT INTO reviews (message, userid, bookid) VALUES('Very good book', 1, 1);`
+  );
 
   client.end();
 };
